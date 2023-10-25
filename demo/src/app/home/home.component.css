@@ -1,0 +1,24 @@
+/* Estilos personalizados */
+.custom-alert {
+    background-color: #ffbf00; /* Color de fondo amarillo */
+    color: #333; /* Color de texto oscuro */
+    padding: 10px;
+    border: 1px solid #ffbf00; /* Borde amarillo */
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .custom-button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: #fff; /* Color de texto blanco */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  /* Cambia el color de fondo de los botones al pasar el mouse sobre ellos */
+  .custom-button:hover {
+    background-color: #0056b3; /* Color de fondo azul más oscuro */
+  }
+  

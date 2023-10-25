@@ -1,0 +1,54 @@
+<!-- Sección de navegación de migas de pan (breadcrumbs) -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <!-- Primer elemento de la migas de pan -->
+    <li class="breadcrumb-item"><a routerLink="/">Inicio</a></li>
+    <!-- Elemento actual y activo en las migas de pan -->
+    <li class="breadcrumb-item active">Vuelos</li>
+  </ol>
+</nav>
+
+<!-- Contenedor principal de la tarjeta (card) -->
+<div class="card">
+  <div class="header">
+    <!-- Título de la tarjeta -->
+    <h2 class="title">Detalles del Vuelo</h2>
+  </div>
+  <div class="content">
+    <!-- Sección para mostrar mensajes de retroalimentación (feedback) si hay elementos en la variable 'feedback' -->
+    <div *ngIf="feedback.length" class="alert alert-{{feedback.type}}">{{ feedback.message }}</div>
+    
+    <!-- Formulario de edición de vuelo si la variable 'flight' existe -->
+    <form *ngIf="flight" #editForm="ngForm" (ngSubmit)="save()">
+      <!-- Campo para editar el Id del vuelo -->
+      <div class="form-group">
+        <label for="id">Id</label>
+        <input type="number" [(ngModel)]="flight.id" id="id" name="id" class="form-control">
+      </div>
+
+      <!-- Campo para editar el lugar de origen (Para) del vuelo -->
+      <div class="form-group">
+        <label for="from">Para</label>
+        <input [(ngModel)]="flight.from" id="from" name="from" class="form-control">
+      </div>
+
+      <!-- Campo para editar el lugar de destino (De Ida) del vuelo -->
+      <div class="form-group">
+        <label for="to">De Ida</label>
+        <input [(ngModel)]="flight.to" id="to" name="to" class="form-control">
+      </div>
+
+      <!-- Campo para editar la fecha del vuelo -->
+      <div class="form-group">
+        <label for="date">Fecha</label>
+        <input type="date" [(ngModel)]="flight.date" id="date" name="date" class="form-control">
+      </div>
+
+      <!-- Botón para guardar los cambios en el formulario -->
+      <button type="submit" class="btn btn-primary" [disabled]="!editForm.form.valid">Guardar</button>
+
+      <!-- Botón para cancelar la edición del formulario y volver atrás -->
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+    </form>
+  </div>
+</div>

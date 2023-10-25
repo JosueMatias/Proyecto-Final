@@ -1,0 +1,61 @@
+<ol class="breadcrumb float-right">
+  <!-- Rastro de navegación (breadcrumb) en la esquina superior derecha. -->
+  <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+  <li class="breadcrumb-item active">Hotel</li>
+</ol>
+<div class="card">
+  <div class="header">
+    <!-- Título de la sección -->
+    <h2 class="title">Hotel List</h2>
+  </div>
+  <div class="content">
+    <form #f="ngForm">
+      <!-- Formulario para filtrar hoteles por ciudad -->
+      <div class="form-group">
+        <label for="city">Ciudad:</label>
+        <input [(ngModel)]="filter.city" id="city" name="city" class="form-control">
+      </div>
+      <!-- Botón para iniciar la búsqueda (desactivado si el formulario no es válido) -->
+      <button (click)="search()" [disabled]="!f?.valid" class="btn btn-primary">Buscar</button>
+      <!-- Enlace para crear un nuevo hotel -->
+      <a [routerLink]="['../hotels', 'new' ]" class="btn btn-default">Nuevo</a>
+    </form>
+  </div>
+</div>
+<div class="card" *ngIf="hotelList.length > 0">
+  <!-- Sección para mostrar la lista de hoteles si hay al menos uno en la lista -->
+  <div *ngIf="feedback.message" class="alert alert-{{feedback.type}}">
+    <!-- Mensaje de retroalimentación (éxito o error) -->
+    {{ feedback.message }}
+  </div>
+  <div class="table-responsive">
+    <table class="table table-centered table-hover mb-0" id="datatable">
+      <thead>
+        <!-- Cabecera de la tabla -->
+        <tr>
+          <th class="border-top-0" scope="col">Id</th>
+          <th class="border-top-0" scope="col">Nombre</th>
+          <th class="border-top-0" scope="col">Ciudad</th>
+          <th class="border-top-0" scope="col">Estrellas</th>
+          <th class="border-top-0" scope="col" style="width:120px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Itera a través de la lista de hoteles y muestra cada uno de ellos -->
+        <tr *ngFor="let item of hotelList" [class.active]="item === selectedHotel">
+          <!-- Cada fila muestra los detalles de un hotel -->
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.city}}</td>
+          <td>{{item.stars}}</td>
+          <td style="white-space: nowrap">
+            <!-- Botón para editar el hotel -->
+            <a [routerLink]="['../hotels', item.id ]" class="btn btn-secondary">Editar</a>&nbsp;
+            <!-- Botón para eliminar el hotel -->
+            <button (click)="delete(item)" class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+/* El siguiente bloque de código define un indicador de carga, un fondo semi-transparente que cubre toda la ventana */
+.loading-indicator {
+  position: fixed; /* Fija el elemento en la ventana, para que no se desplace con el contenido */
+  left: 0px;
+  top: 0px;
+  width: 100%; /* Toma todo el ancho de la ventana */
+  height: 100%; /* Toma toda la altura de la ventana */
+  background-color: rgb(255, 0, 0); /* Establece el color de fondo en rojo (RGB) */
+  opacity: 0.3; /* Establece la opacidad al 30% para que sea semi-transparente */
+}
+
+/* El siguiente bloque de código define un spinner (indicador de carga giratorio) */
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: relative; /* Coloca el spinner en su posición relativa */
+  margin: 100px auto; /* Centra el spinner horizontalmente con un margen superior de 100px */
+}
+
+/* Los siguientes dos bloques definen dos elementos que forman el spinner: */
+.double-bounce1, .double-bounce2 {
+  width: 100%; /* Toman todo el ancho del contenedor */
+  height: 100%; /* Toman toda la altura del contenedor */
+  border-radius: 50%; /* Redondea los bordes para formar un círculo */
+  background-color: #FFF; /* Establece el color de fondo en blanco */
+  opacity: 0.6; /* Establece la opacidad al 60% para que sean semi-transparentes */
+  position: absolute; /* Los coloca en posición absoluta dentro del contenedor */
+  top: 0;
+  left: 0;
+
+  /* Se definen las animaciones utilizando CSS Keyframes */
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out; /* Para navegadores webkit (como Chrome y Safari) */
+  animation: sk-bounce 2.0s infinite ease-in-out; /* Para navegadores estándar */
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s; /* Retrasa la animación del segundo elemento por 1 segundo */
+  animation-delay: -1.0s;
+}
+
+/* A continuación, se definen las animaciones con CSS Keyframes para el spinner */
+@-webkit-keyframes sk-bounce {
+  0%, 100% {
+    -webkit-transform: scale(0.0); /* Escala el elemento a 0 (invisibilidad) en los extremos */
+  }
+  50% {
+    -webkit-transform: scale(1.0); /* Escala el elemento a 1 (visibilidad completa) a la mitad de la animación */
+  }
+}
+
+@keyframes sk-bounce {
+  0%, 100% {
+    transform: scale(0.0); /* Lo mismo que arriba, pero para navegadores estándar */
+    -webkit-transform: scale(0.0);
+  }
+  50% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+

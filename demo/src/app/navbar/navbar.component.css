@@ -1,0 +1,18 @@
+/* Estilos para el logotipo de la aplicación */
+.navbar-brand {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #007BFF;
+}
+
+/* Estilos para el botón de alternar la barra lateral */
+.navbar-toggler {
+  background-color: #007BFF;
+  border: 1px solid #007BFF;
+  color: #fff;
+}
+
+/* Estilos para la barra lateral (si es necesario) */
+.nav-open {
+  /* Estilos para cuando la barra lateral está abierta */
+}

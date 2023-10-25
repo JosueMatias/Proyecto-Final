@@ -1,0 +1,47 @@
+<ol class="breadcrumb float-right">
+  <li class="breadcrumb-item"><a routerLink="/">Inicio</a></li>
+  <li class="breadcrumb-item active">Hoteles</li>
+</ol>
+<div class="card">
+  <div class="header">
+    <h2 class="title">Detalles de Hoteles</h2>
+  </div>
+  <div class="content">
+    <!-- Muestra un mensaje de retroalimentación si existe -->
+    <div *ngIf="feedback.message" class="alert alert-{{feedback.type}}">{{ feedback.message }}</div>
+    
+    <!-- Formulario para editar detalles del hotel -->
+    <form *ngIf="hotel" #editForm="ngForm" (ngSubmit)="save()">
+    
+      <!-- Campo de visualización del ID del hotel (no editable) -->
+      <div class="form-group">
+        <label>Id</label>
+        {{hotel.id || 'n/a'}} <!-- Muestra el ID del hotel o 'n/a' si es nulo -->
+      </div>
+    
+      <!-- Campo de entrada para el nombre del hotel -->
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input [(ngModel)]="hotel.name" id="name" name="name" class="form-control">
+      </div>
+    
+      <!-- Campo de entrada para la ciudad del hotel -->
+      <div class="form-group">
+        <label for="city">Ciudad</label>
+        <input [(ngModel)]="hotel.city" id="city" name="city" class="form-control">
+      </div>
+    
+      <!-- Campo de entrada para el número de estrellas del hotel -->
+      <div class="form-group">
+        <label for="stars">Estrellas</label>
+        <input [(ngModel)]="hotel.stars" id="stars" name="stars" class="form-control">
+      </div>
+    
+      <!-- Botón para guardar los cambios (habilitado si el formulario es válido) -->
+      <button type="submit" class="btn btn-primary" [disabled]="!editForm.form.valid">Guardar</button>
+      
+      <!-- Botón para cancelar la edición -->
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+    </form>
+  </div>
+</div>

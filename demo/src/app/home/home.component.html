@@ -1,0 +1,37 @@
+
+<div class="card">
+  <div class="header">
+    <h1 class="title">Bienvenido de vuelta: {{userName}}</h1>
+  </div>
+  <div class="content">
+    <!-- Comprueba si el usuario necesita iniciar sesión -->
+    <div *ngIf="needsLogin" class="alert alert-warning">
+      Has sido redirigido a esta página porque no tienes los permisos necesarios
+      para la acción solicitada. ¡Inicia sesión con una cuenta de usuario correspondiente!
+    </div>
+
+    <!-- Botón para iniciar sesión -->
+    <button (click)="login()" class="btn btn-default">Login</button>
+
+    <!-- Botón para cerrar sesión -->
+    <button (click)="logout()" class="btn btn-default">Logout</button>
+
+    <!--
+    Comentarios: Esta sección muestra pestañas de información relacionada con pasajeros.
+    <tabbed-pane [activeId]="0">
+        <tab title="Booked" [id]="0">
+            Esta página podría mostrar a todos los pasajeros con reservas...
+        </tab>
+        <tab title="Checked in" [id]="1">
+            Esta página podría mostrar a todos los pasajeros que han realizado el check-in...
+        </tab>
+        <tab title="Boarded" [id]="2">
+            Esta página podría mostrar a todos los pasajeros que han abordado...
+        </tab>
+    </tabbed-pane>
+    -->
+  </div>
+</div>
+
+
+

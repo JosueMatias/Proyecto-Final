@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div class="sidebar" data-background-color="white" data-active-color="danger">
+    <sidebar-cmp></sidebar-cmp> <!-- Incluye el componente de la barra lateral -->
+  </div>
+  <div class="main-panel">
+    <navbar-cmp></navbar-cmp> <!-- Incluye el componente de la barra de navegación superior (navbar) -->
+    <div class="content">
+      <router-outlet></router-outlet> <!-- Espacio donde se cargarán componentes dinámicamente según la ruta -->
+      <router-outlet name="aux"></router-outlet> <!-- Espacio adicional para cargar componentes auxiliares, si es necesario -->
+    </div>
+  </div>
+</div>
+
